@@ -1,0 +1,88 @@
+set nocompatible
+filetype off
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'VundleVim/Vundle.vim'
+"Plugin 'justinmk/vim-syntax-extra'
+Plugin 'ctrlpvim/ctrlp.vim'
+"Plugin 'scrooloose/syntastic'
+Plugin 'scrooloose/nerdtree'
+"Plugin 'bling/vim-airline'
+"Plugin 'airblade/vim-gitgutter'
+"Plugin 'altercation/vim-colors-solarized'
+"Plugin 'nathanaelkane/vim-indent-guides'
+"Plugin 'ggreer/the_silver_searcher'
+"Plugin 'farfanoide/vim-kivy'
+"Plugin 'flazz/vim-colorschemes'
+"Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'posva/vim-vue'
+Plugin 'ivanceras/rust-vim-setup'
+Plugin 'rust-lang/rust.vim'
+Plugin 'neoclide/coc.nvim', {'branch': 'release'}
+Plugin 'dense-analysis/ale'
+Plugin 'github/copilot.vim'
+Plug 'vimsence/vimsence'
+
+call vundle#end()
+filetype plugin indent on
+
+let g:rustfmt_autosave = 1
+let g:rustfmt_emit_files = 1
+let g:rustfmt_fail_silently = 0
+let g:ale_sign_column_always = 1
+let g:ale_fixers = { 'javascript': ['eslint', 'stylelint'],'typescript': ['eslint'],'vue':['eslint', 'stylelint'],'css':['eslint', 'stylelint'],'scss':['eslint', 'stylelint']} 
+let g:ale_linters = { 'javascript': ['eslint', 'stylelint'],'typescript': ['eslint'],'vue':['eslint', 'stylelint'],'css':['eslint', 'stylelint'],'scss':['eslint', 'stylelint'] }
+let g:ale_fix_on_save = 1
+let g:ale_lint_on_save = 1
+
+set tabstop=2
+set shiftwidth=2
+set expandtab
+set number
+set relativenumber
+
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+inoremap <silent><expr> <TAB> pumvisible() ? coc#pum#confirm() : "\<C-g>u\<TAB>"
+nmap <silent> <c-i> <Plug>(coc-diagnostic-prev)
+
+nmap <silent> <c-s> <Plug>(coc-definition)
+
+set updatetime=300
+set signcolumn=yes
+  
+    
+set background=dark
+let g:everforest_background = 'soft'
+let g:everforest_better_performance = 1
+colorscheme everforest
+
+set nocursorcolumn
+set nocursorline
+syntax sync minlines=256
+
+set fileformat=unix
+set noswapfile
+
+set whichwrap+=<,>,h,l,[,]
+map :W :w
+map :E :Explore
+map :X :x
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-h> <C-w>h
+map <C-l> <C-w>l
+
+map <C-n> :NERDTreeToggle<CR>
+let g:NERDTreeWinPos="right"
+let g:ctrlp_custom_ignore = {
+            \  'dir': '\v[\/](\.(git|hg|svn|buildozer)|node_modules|target|compiled|dist)$',
+            \ 'file': '\v\.(o||pyc|lock)$',
+            \ }
+
+setg.ctrlp_custom_ignore = {dir = [['\v[\/](\.(git|hg|svn|buildozer)|node_modules|target|compiled|dist)$']], file = 'lock'}

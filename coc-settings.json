@@ -1,0 +1,7 @@
+{
+    "rust-analyzer.checkOnSave.enable": false,
+    "inlayHint.enable": false,
+    "volar.takeOverMode.enabled": true,
+    "typescript.preferences.importModuleSpecifier": "project-relative",
+    "eslint.autoFixOnSave": true
+}
