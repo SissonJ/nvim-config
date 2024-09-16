@@ -24,6 +24,20 @@ setg.ale_linters = { javascript= {'eslint', 'stylelint'},typescript= {'eslint'},
 setg.ale_fix_on_save = 1
 setg.ale_lint_on_save = 1
 setg.ctrlp_custom_ignore = {dir = [['\v[\/](\.(git|hg|svn|buildozer)|node_modules|target|compiled|dist)$']], file = 'lock'}
+setg.copilot_no_tab_map = true
+setg.mapleader = ' '
+setg.coc_global_extensions = {
+  'coc-tsserver', 
+  'coc-eslint', 
+  'coc-json', 
+  '@yaegassy/coc-volar', 
+  'coc-rust-analyzer',
+}
+-- 'coc-prettier', 
+-- 'coc-yank', 
+-- 'coc-snippets', 
+-- 'coc-highlight', 
+-- 'coc-lists', 'coc-git', 'coc-fzf-preview', 'coc-dictionary', 'coc-docker', 'coc-deno', 'coc-calc'}
 
 local map = vim.keymap
 map.set('n', ':W', ':w')
@@ -35,11 +49,11 @@ map.set('n', '<C-l>', '<C-w>l')
 map.set('n', '<C-n>', ':NERDTreeToggle<CR>')
 
 local opts = {silent = true, noremap = true, expr = true, replace_keycodes = false}
-map.set("i", '<TAB>', 'coc#pum#visible() ? coc#pum#confirm() : v:lua.check_back_space() ? "<TAB>" : coc#refresh()', opts)
+map.set("i", '<TAB>', 'coc#pum#visible() ? coc#pum#confirm() : "<TAB>"', opts)
 map.set("n", "gd", "<Plug>(coc-definition)", {silent = true})
 map.set("n", "<C-y>", '<Plug>(coc-rename)', {silent = true})
 map.set("n", "<C-i>", "<Plug>(coc-diagnostic-prev)", {silent = true})
 map.set("n", "<C-I>", "<Plug>(coc-diagnostic-next)", {silent = true})
-map.set("n", "T", "vim.fn.CocAction('doHover')", {silent = true})
-map.set("n", "<C-b>", ':Copilot<CR>', {silent = true})
-
+map.set("n", "t", ":call CocActionAsync('doHover')<CR>", {silent = true})
+vim.keymap.set('i', '<C-b>', 'copilot#Accept("\\<CR>")', {expr = true, replace_keycodes = false })
+map.set("n", "<leader>a", "print('hello')", {silent = true})
