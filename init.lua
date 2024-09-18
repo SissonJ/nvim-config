@@ -23,7 +23,10 @@ setg.ale_fixers = { javascript= {'eslint', 'stylelint'},typescript= {'eslint'},v
 setg.ale_linters = { javascript= {'eslint', 'stylelint'},typescript= {'eslint'},vue={'eslint', 'stylelint'},css={'eslint', 'stylelint'},scss={'eslint', 'stylelint'} }
 setg.ale_fix_on_save = 1
 setg.ale_lint_on_save = 1
-setg.ctrlp_custom_ignore = {dir = [['\v[\/](\.(git|hg|svn|buildozer)|node_modules|target|compiled|dist)$']], file = 'lock'}
+setg.ctrlp_custom_ignore = {
+  dir = [[\v[\/](\.(git|hg|svn|buildozer)|node_modules|target|compiled|dist)$]],
+  file = [[\v\.(o|pyc|lock)$]]
+}
 setg.copilot_no_tab_map = true
 setg.mapleader = ' '
 setg.coc_global_extensions = {
