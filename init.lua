@@ -1,4 +1,9 @@
 require('plugins')
+require('CopilotChat').setup({
+  model = "claude-3.5-sonnet",
+  suggestion = { enabled = false },
+  panel = { enabled = false },
+})
 
 vim.cmd("colorscheme kanagawa")
 
@@ -48,7 +53,7 @@ map.set('n', ':Wq', ':wq')
 map.set('n', '<C-j>', '<C-w>j')
 map.set('n', '<C-k>', '<C-w>k')
 map.set('n', '<C-h>', '<C-w>h')
-map.set('n', '<C-l>', '<C-w>l')
+map.set('n', '<C-l>', '<C-w>l', { noremap = true })
 map.set('n', '<C-n>', ':NERDTreeToggle<CR>')
 
 local opts = {silent = true, noremap = true, expr = true, replace_keycodes = false}
@@ -60,3 +65,9 @@ map.set("n", "<leader>k", "<Plug>(coc-diagnostic-next)", {silent = true})
 map.set("n", "t", ":call CocActionAsync('doHover')<CR>", {silent = true})
 map.set('i', '<C-b>', 'copilot#Accept("\\<CR>")', {expr = true, replace_keycodes = false })
 map.set("n", "<leader>cc", ":CopilotChatToggle<CR>", {silent = true})
+map.set("n", "<leader>cq", function()
+  local input = vim.fn.input("Quick Chat: ")
+  if input ~= "" then
+    require("CopilotChat").ask(input, { selection = require("CopilotChat.select").buffer })
+  end
+end, {silent = true, noremap = true, desc = "CopilotChat - Quick chat"})
