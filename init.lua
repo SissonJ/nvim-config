@@ -41,6 +41,8 @@ setg.coc_global_extensions = {
   '@yaegassy/coc-volar', 
   'coc-rust-analyzer',
 }
+setg.ale_fixers.solidity = { 'prettier' }
+setg.ale_linters.solidity = { 'solhint' }
 -- 'coc-prettier', 
 -- 'coc-yank', 
 -- 'coc-snippets', 

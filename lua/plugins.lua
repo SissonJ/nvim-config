@@ -12,6 +12,7 @@ return require('packer').startup(function(use)
 	use 'vimsence/vimsence'
   use 'zbirenbaum/copilot.lua'
   use 'nvim-lua/plenary.nvim'
+  use { "tomlion/vim-solidity" }
   use ({
     "CopilotC-Nvim/CopilotChat.nvim",
     branch = "main", -- Specify branch explicitly
