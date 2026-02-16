@@ -4,7 +4,7 @@ map.set('n', ':Wq', ':wq')
 map.set('n', '<C-j>', '<C-w>j')
 map.set('n', '<C-k>', '<C-w>k')
 map.set('n', '<C-h>', '<C-w>h')
-map.set('n', '<C-l>', '<C-w>l')
+map.set('n', '<C-l>', '<C-w>l', { noremap = true })
 map.set('n', '<C-n>', ':NERDTreeToggle<CR>')
 
 local opts = {silent = true, noremap = true, expr = true, replace_keycodes = false}

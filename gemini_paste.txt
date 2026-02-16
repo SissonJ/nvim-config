@@ -1,3 +1,31 @@
+---------------------------------
+FILE: coc-settings.json
+---------------------------------
+{
+  "rust-analyzer.checkOnSave.enable": false,
+  "inlayHint.enable": false,
+  "volar.takeOverMode.enabled": true,
+  "typescript.preferences.importModuleSpecifier": "project-relative",
+  "eslint.autoFixOnSave": true,
+  "languageserver": {
+    "solidity": {
+      "command": "nomicfoundation-solidity-language-server",
+      "args": ["--stdio"],
+      "filetypes": ["solidity"],
+      "rootPatterns": [
+        "hardhat.config.js",
+        "foundry.toml",
+        "truffle-config.js",
+        ".git"
+      ]
+    }
+  }
+}
+
+
+---------------------------------
+FILE: init.lua
+---------------------------------
 -- ==========================================================================
 -- 1. LAZY.NVIM BOOTSTRAP
 -- ==========================================================================
@@ -48,8 +76,8 @@ require("lazy").setup({
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
     config = function()
-      require("nvim-treesitter.config").setup({
-        ensure_installed = { "markdown", "markdown_inline", "lua", "vim", "vimdoc", "javascript", "typescript", "vue", "rust", "solidity", "diff", "bash", "json" },
+      require("nvim-treesitter.configs").setup({
+        ensure_installed = { "markdown", "markdown_inline", "lua", "vim", "vimdoc", "javascript", "typescript", "vue", "rust", "solidity", "diff" },
         highlight = { enable = true },
       })
     end,
@@ -81,7 +109,7 @@ require("lazy").setup({
     },
     build = "make tiktoken",
     opts = {
-      model = "auto",
+      model = "gemini-3.0-pro",
       suggestion = { enabled = false },
       panel = { enabled = false },
     },
@@ -102,7 +130,7 @@ require("lazy").setup({
         provider = "gemini",
         providers = {
           gemini = {
-            model = "gemini-2.0-flash", 
+            model = "gemini-2.0-flash", -- 3.0-pro might be too slow/rate-limited for inline edits, flash is usually safer
             extra_request_body = {
               temperature = 1.0,
             },
@@ -182,3 +210,28 @@ end, {silent = true, noremap = true, desc = "CopilotChat - Quick chat"})
 map.set("n", "<leader>aa", "<cmd>AvanteToggle<CR>", { silent = true, desc = "Avante: Toggle" })
 map.set("v", "<leader>ah", "<cmd>AvanteAsk<CR>", { silent = true, desc = "Avante: Selection Ask" })
 map.set("n", "<leader>ae", "<cmd>AvanteEdit<CR>", { silent = true, desc = "Avante: Direct Edit" })
+
+
+---------------------------------
+FILE: lazy-lock.json
+---------------------------------
+{
+  "CopilotChat.nvim": { "branch": "main", "commit": "743d6005fb412c85309d3f3aa45f18f3a2fb2098" },
+  "avante.nvim": { "branch": "main", "commit": "ecc669a87deb2be95db49e53041c05a2d0980fd4" },
+  "coc.nvim": { "branch": "release", "commit": "acaac49d5d3fe358ce0d67c91d78b1ada683d148" },
+  "copilot.vim": { "branch": "release", "commit": "a12fd5672110c8aa7e3c8419e28c96943ca179be" },
+  "ctrlp.vim": { "branch": "master", "commit": "86872f021c4e245e3c583054fda82fb820a2faee" },
+  "dressing.nvim": { "branch": "master", "commit": "2d7c2db2507fa3c4956142ee607431ddb2828639" },
+  "gruvbox-material": { "branch": "master", "commit": "790afe9dd085aa04eccd1da3626c5fa05c620e53" },
+  "img-clip.nvim": { "branch": "main", "commit": "b6ddfb97b5600d99afe3452d707444afda658aca" },
+  "lazy.nvim": { "branch": "main", "commit": "306a05526ada86a7b30af95c5cc81ffba93fef97" },
+  "nerdtree": { "branch": "master", "commit": "690d061b591525890f1471c6675bcb5bdc8cdff9" },
+  "nui.nvim": { "branch": "main", "commit": "de740991c12411b663994b2860f1a4fd0937c130" },
+  "nvim-treesitter": { "branch": "main", "commit": "4d9466677a5ceadef104eaa0fe08d60d91c4e9a7" },
+  "nvim-web-devicons": { "branch": "master", "commit": "746ffbb17975ebd6c40142362eee1b0249969c5c" },
+  "plenary.nvim": { "branch": "master", "commit": "b9fd5226c2f76c951fc8ed5923d85e4de065e509" },
+  "vim-solidity": { "branch": "master", "commit": "569bbbedc3898236d5912fed0caf114936112ae4" },
+  "vim-vue": { "branch": "master", "commit": "6ae8fa751fbe4c6605961d2309f8326873fa40a6" }
+}
+
+

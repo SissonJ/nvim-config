@@ -1,15 +1,20 @@
 {
   "rust-analyzer.checkOnSave.enable": false,
   "inlayHint.enable": false,
-  "volar.takeOverMode.enabled": true,
+  "volar.takeOverMode.enabled": false,
   "typescript.preferences.importModuleSpecifier": "project-relative",
   "eslint.autoFixOnSave": true,
   "languageserver": {
     "solidity": {
-      "command": "solidity-language-server",
+      "command": "nomicfoundation-solidity-language-server",
       "args": ["--stdio"],
       "filetypes": ["solidity"],
-      "rootPatterns": ["hardhat.config.js", "truffle-config.js", "foundry.toml", ".git"]
+      "rootPatterns": [
+        "hardhat.config.js",
+        "foundry.toml",
+        "truffle-config.js",
+        ".git"
+      ]
     }
   }
 }
