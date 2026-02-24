@@ -102,7 +102,7 @@ require("lazy").setup({
         provider = "gemini",
         providers = {
           gemini = {
-            model = "gemini-2.0-flash", 
+            model = "gemini-2.0-flash-lite", 
             extra_request_body = {
               temperature = 1.0,
             },
