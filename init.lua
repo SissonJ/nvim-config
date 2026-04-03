@@ -174,7 +174,7 @@ map.set("n", "<leader>cc", ":CopilotChatToggle<CR>", {silent = true})
 map.set("n", "<leader>cq", function()
   local input = vim.fn.input("Quick Chat: ")
   if input ~= "" then
-    require("CopilotChat").ask(input, { selection = require("CopilotChat.select").buffer })
+    require("CopilotChat").ask(input, { sticky = "#buffer" })
   end
 end, {silent = true, noremap = true, desc = "CopilotChat - Quick chat"})
 
